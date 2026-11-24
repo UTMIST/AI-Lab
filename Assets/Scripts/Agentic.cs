@@ -39,9 +39,11 @@ public class Agentic : Agent
         Body.AddForce(controlSignal*15);
 
         float speedOfBall = this.Body.linearVelocity.magnitude;
-    
+        float fallPenalty = -100;
+
         if (this.transform.localPosition.y < 0)
         {
+            SetReward(fallPenalty);
             EndEpisode();
         }
         else
